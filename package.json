@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "canvas": "^2.11.2",
-    "canvas-to-buffer": "^3.0.1",
     "chess.js": "^1.0.0-beta.8",
     "path": "^0.12.7"
   },

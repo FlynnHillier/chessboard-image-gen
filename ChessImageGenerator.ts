@@ -2,8 +2,6 @@ import { Chess, Square } from "chess.js";
 import { createCanvas, loadImage } from "canvas";
 import { Config, applyDefaultConfig } from "./config";
 import path from "path";
-// @ts-ignore
-import Frame from "canvas-to-buffer";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
@@ -90,11 +88,6 @@ export class ChessImageGenerator {
       }
     }
 
-    return new Frame(cv, {
-      quality: 0.8,
-      image: {
-        types: ["png"],
-      },
-    }).toBuffer() as Buffer;
+    return cv.toBuffer("image/png");
   }
 }
