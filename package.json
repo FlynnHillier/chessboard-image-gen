@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && copyfiles images/**/*.png dist/images/"
+    "build": "tsc && copyfiles images/**/*.png dist/"
   },
   "dependencies": {
     "canvas": "^2.11.2",
