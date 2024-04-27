@@ -75,7 +75,7 @@ export class ChessImageGenerator {
         if (piece) {
           //Tile contains piece
           const imagePath = `images/${_config.pieceStyle}/${piece.color}/${piece.type}.png`;
-          const image = await loadImage(imagePath, path.join(__dirname, imagePath));
+          const image = await loadImage(path.join(__dirname, imagePath));
 
           await ctx.drawImage(
             image,
