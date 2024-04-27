@@ -1,9 +1,16 @@
 {
-  "name": "chessboard-image-gen",
+  "name": "@flynnhillier/chessboard-image-gen",
   "version": "1.0.0",
   "repository": "https://github.com/FlynnHillier/chessboard-image-gen.git",
   "author": "FlynnHillier <flynnhillier@gmail.com>",
   "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "canvas": "^2.11.2",
     "canvas-to-buffer": "^3.0.1",
