@@ -28,7 +28,7 @@ Using your preffered package manager:
 ### Load FEN
 
 ```typescript
-import { ChessImageGenerator } from "./ChessImageGenerator";
+import { ChessImageGenerator } from "@flynnhillier/chessboard-image-gen";
 
 async function main() {
   await ChessImageGenerator.fromFEN(
