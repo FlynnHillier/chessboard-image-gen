@@ -27,12 +27,14 @@ Using your preffered package manager:
 ### Load FEN
 
 ```typescript
-import { ChessImageGenerator } from "@flynnhillier/chessboard-image-gen";
+import { ChessBoardImage } from "@flynnhillier/chessboard-image-gen";
 
+//Wrap in an asyncrinous function so we can call within our top level.
 async function main() {
-  await ChessImageGenerator.fromFEN(
-    "rnbqkbnr/1ppppQpp/8/8/2B5/p3P3/PPPP1PPP/RNB1K1NR b KQkq - 0 4",
-    "./output.png"
+  const ci = new ChessBoardImage();
+  await ci.fromFEN(
+    "rnbqkbnr/2pppQpp/8/1p6/2B1PP2/p7/PPPP2PP/RNB1K1NR b KQkq - 0 6",
+    "myChessBoardImage"
   );
 }
 
