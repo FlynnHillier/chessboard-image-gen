@@ -21,7 +21,7 @@ export type ProvidedConfig = Partial<{
 }>;
 
 const DEFAULT_BOARD_CONFIG: BoardConfig = {
-  size: 250,
+  size: 500,
   lightSquareColor: "rgb(240, 217, 181)",
   darkSquareColor: "rgb(181, 136, 99)",
   orientation: "w",

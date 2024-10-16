@@ -43,8 +43,8 @@ export class ChessBoardImage {
     ctx.fill();
 
     const col =
-      this.config.board.orientation === "w" ? (r: number) => r + 1 : (r: number) => 7 - r + 1;
-    const row = (c: number) => "abcdefgh"[this.config.board.orientation === "w" ? c : 7 - c];
+      this.config.board.orientation === "b" ? (r: number) => r + 1 : (r: number) => 7 - r + 1;
+    const row = (c: number) => "abcdefgh"[this.config.board.orientation === "b" ? c : 7 - c];
     const tile: (r: number, c: number) => Square = (r, c) => (row(r) + col(c)) as Square;
 
     //draw chessboard canvas

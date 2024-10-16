@@ -10,15 +10,14 @@ Configure outputted image with a selection of configuration options:
 
 - Size of image
 - Colour of board
-- Styles of pieces
 - Orientation of board
 
 ## Installation
 
 Using your preffered package manager:
 
-**Yarn:**<br>
-`yarn add @flynnhillier/chessboard-image-gen`
+**pnpm:**<br>
+`pnpm install @flynnhillier/chessboard-image-gen`
 
 **npm:**<br>
 `npm i @flynnhillier/chessboard-image-gen`
