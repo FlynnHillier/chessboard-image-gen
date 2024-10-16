@@ -1,6 +1,6 @@
 {
   "name": "@flynnhillier/chessboard-image-gen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/FlynnHillier/chessboard-image-gen.git",
   "author": "FlynnHillier <flynnhillier@gmail.com>",
   "license": "MIT",
@@ -14,9 +14,9 @@
     "build": "tsup && copyfiles images/**/*.png dist/"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "chess.js": "^1.0.0-beta.8",
-    "path": "^0.12.7",
-    "pureimage": "^0.4.18"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

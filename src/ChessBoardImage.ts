@@ -1,9 +1,9 @@
-import * as PImage from "pureimage";
 import { Chess, Square } from "chess.js";
 import { applyDefaultConfig, Config, ProvidedConfig } from "./config";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { createCanvas, loadImage } from "canvas";
 
 export class ChessBoardImage {
   private config: Config;
@@ -21,21 +21,21 @@ export class ChessBoardImage {
    */
   public async fromFEN(FEN: string, saveAsFilename?: string): Promise<string> {
     const chess: Chess = new Chess(FEN);
-    const img = await this.generatePImage(chess);
-    return await this.saveAsPNG(img, saveAsFilename);
+    const img = await this.generateImageBuffer(chess);
+    return await this.saveBufferAsPNG(img, saveAsFilename);
   }
 
-  private async saveAsPNG(bitmap: PImage.Bitmap, filename?: string): Promise<string> {
+  private async saveBufferAsPNG(bf: Buffer, filename?: string): Promise<string> {
     if (!filename?.endsWith(".png")) filename = (filename ?? Date.now().toString()) + ".png";
 
     const outpath = path.join(this.config.outDir, filename);
-    await PImage.encodePNGToStream(bitmap, fs.createWriteStream(outpath));
+    await fs.writeFileSync(outpath, bf);
     return outpath;
   }
 
-  private async generatePImage(chess: Chess) {
-    const img = PImage.make(this.config.board.size, this.config.board.size);
-    const ctx = img.getContext("2d");
+  private async generateImageBuffer(chess: Chess): Promise<Buffer> {
+    const cv = createCanvas(this.config.board.size, this.config.board.size);
+    const ctx = cv.getContext("2d");
 
     ctx.beginPath();
     ctx.rect(0, 0, this.config.board.size, this.config.board.size);
@@ -67,13 +67,12 @@ export class ChessBoardImage {
 
         if (piece) {
           //Tile contains piece
-          const imagePath = `images/${this.config.board.pieceStyle}/${piece.color}/${piece.type}.png`;
+          // const imagePath = `images/${this.config.board.pieceStyle}/${piece.color}/${piece.type}.png`;
+          const imagePath = `images/cburnett/${piece.color}/${piece.type}.png`;
           const dir = path.dirname(fileURLToPath(import.meta.url));
-          const image = await PImage.decodePNGFromStream(
-            fs.createReadStream(path.join(dir, imagePath))
-          );
+          const image = await loadImage(path.join(dir, imagePath));
 
-          ctx.drawImage(
+          await ctx.drawImage(
             image,
             (this.config.board.size / 8) * (7 - r + 1) - this.config.board.size / 8,
             (this.config.board.size / 8) * c,
@@ -83,6 +82,7 @@ export class ChessBoardImage {
         }
       }
     }
-    return img;
+
+    return cv.toBuffer("image/png");
   }
 }

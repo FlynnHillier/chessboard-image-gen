@@ -1,5 +1,1 @@
-import { ChessBoardImage } from "./ChessBoardImage";
-
-module.exports = {
-  ChessBoardImage,
-};
+export { ChessBoardImage } from "./ChessBoardImage";
