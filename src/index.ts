@@ -1,0 +1,1 @@
+export { ChessBoardImage } from "./ChessBoardImage";
